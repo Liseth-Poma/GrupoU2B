@@ -1,0 +1,274 @@
+org: ufaespe
+service: backend
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-east-1
+  environment:
+    DYNAMO_TABLE: UsoLabsTable
+  httpApi:
+    cors:
+      allowedOrigins:
+        - '*'
+      allowedMethods:
+        - GET
+        - POST
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+      Resource:
+        - arn:aws:dynamodb:us-east-1:599841538632:table/UsoLabsTable
+
+functions:
+  ##############
+  #LABORATORIOS 
+  ##############
+  crearLaboratorio:
+    handler: src/handlers/laboratorios.create
+    events:
+      - httpApi:
+          path: /laboratorios
+          method: post
+
+  obtenerLaboratorios:
+    handler: src/handlers/laboratorios.getAll
+    events:
+      - httpApi:
+          path: /laboratorios
+          method: get
+
+  obtenerLaboratorioPorId:
+    handler: src/handlers/laboratorios.getById
+    events:
+      - httpApi:
+          path: /laboratorios/{id}
+          method: get
+
+  actualizarLaboratorio:
+    handler: src/handlers/laboratorios.update
+    events:
+      - httpApi:
+          path: /laboratorios/{id}
+          method: put
+
+  eliminarLaboratorio:
+    handler: src/handlers/laboratorios.delete
+    events:
+      - httpApi:
+          path: /laboratorios/{id}
+          method: delete
+
+  ##############
+  #ASIGNATURAS 
+  ##############
+  crearAsignatura:
+    handler: src/handlers/asignaturas.create
+    events:
+      - httpApi:
+          path: /asignaturas
+          method: post
+
+  obtenerAsignaturas:
+    handler: src/handlers/asignaturas.getAll
+    events:
+      - httpApi:
+          path: /asignaturas
+          method: get
+
+  obtenerAsignaturaPorId:
+    handler: src/handlers/asignaturas.getById
+    events:
+      - httpApi:
+          path: /asignaturas/{id}
+          method: get
+
+  actualizarAsignatura:
+    handler: src/handlers/asignaturas.update
+    events:
+      - httpApi:
+          path: /asignaturas/{id}
+          method: put
+
+  eliminarAsignatura:
+    handler: src/handlers/asignaturas.delete
+    events:
+      - httpApi:
+          path: /asignaturas/{id}
+          method: delete
+
+  ##############
+  #PARCIALES
+  ##############
+  crearParcial:
+    handler: src/handlers/parciales.create
+    events:
+      - httpApi:
+          path: /parciales
+          method: post
+
+  obtenerParciales:
+    handler: src/handlers/parciales.getAll
+    events:
+      - httpApi:
+          path: /parciales
+          method: get
+
+  obtenerParcialPorId:
+    handler: src/handlers/parciales.getById
+    events:
+      - httpApi:
+          path: /parciales/{asignaturaId}/{parcialId}
+          method: get
+
+  actualizarParcial:
+    handler: src/handlers/parciales.update
+    events:
+      - httpApi:
+          path: /parciales/{asignaturaId}/{parcialId}
+          method: put
+
+  eliminarParcial:
+    handler: src/handlers/parciales.delete
+    events:
+      - httpApi:
+          path: /parciales/{asignaturaId}/{parcialId}
+          method: delete
+
+  ##############
+  # PRACTICAS
+  ##############
+  crearPractica:
+    handler: src/handlers/practicas.create
+    events:
+      - httpApi:
+          path: /practicas
+          method: post
+
+  obtenerPracticas:
+    handler: src/handlers/practicas.getAll
+    events:
+      - httpApi: 
+          path: /practicas
+          method: get
+
+  obtenerPracticaPorId:
+    handler: src/handlers/practicas.getById
+    events:
+      - httpApi:
+          path: /practicas/{id}
+          method: get
+
+  actualizarPractica:
+    handler: src/handlers/practicas.update
+    events:
+      - httpApi:
+          path: /practicas/{id}
+          method: put
+
+  eliminarPractica:
+    handler: src/handlers/practicas.delete
+    events:
+      - httpApi:
+          path: /practicas/{id}
+          method: delete
+
+  ##############
+  # USO DE EQUIPOS
+  ##############
+  crearUsoEquipo:
+    handler: src/handlers/usoEquipos.create
+    events:
+      - httpApi:
+          path: /uso-equipos
+          method: post
+
+  obtenerUsoEquipos:
+    handler: src/handlers/usoEquipos.getAll
+    events:
+      - httpApi:
+          path: /uso-equipos
+          method: get
+
+  obtenerUsoEquipoPorId:
+    handler: src/handlers/usoEquipos.getById
+    events:
+      - httpApi:
+          path: /uso-equipos/{estudianteId}/{practicaId}
+          method: get
+
+  actualizarUsoEquipo:
+    handler: src/handlers/usoEquipos.update
+    events:
+      - httpApi:
+          path: /uso-equipos/{estudianteId}/{practicaId}
+          method: put
+
+  eliminarUsoEquipo:  # corregido aquí
+    handler: src/handlers/usoEquipos.delete
+    events:
+      - httpApi:
+          path: /uso-equipos/{estudianteId}/{practicaId}
+          method: delete
+
+
+  ##############
+  # USUARIOS
+  ##############
+  crearUsuario:
+    handler: src/handlers/usuarios.create
+    events:
+      - httpApi:
+          path: /usuarios
+          method: post
+
+  obtenerUsuarios:
+    handler: src/handlers/usuarios.getAll
+    events:
+      - httpApi:
+          path: /usuarios
+          method: get
+
+  obtenerUsuarioPorId:
+    handler: src/handlers/usuarios.getById
+    events:
+      - httpApi:
+          path: /usuarios/{id}
+          method: get
+
+  actualizarUsuario:
+    handler: src/handlers/usuarios.update
+    events:
+      - httpApi:
+          path: /usuarios/{id}
+          method: put
+
+  eliminarUsuario:
+    handler: src/handlers/usuarios.delete
+    events:
+      - httpApi:
+          path: /usuarios/{id}
+          method: delete
+
+
+resources:
+  Resources:
+    UsoLabsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: UsoLabsTable
+        AttributeDefinitions:
+          - AttributeName: PK
+            AttributeType: S
+          - AttributeName: SK
+            AttributeType: S
+        KeySchema:
+          - AttributeName: PK
+            KeyType: HASH
+          - AttributeName: SK
+            KeyType: RANGE
+        BillingMode: PAY_PER_REQUEST
