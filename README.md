@@ -17,7 +17,6 @@ Aplicar los conocimientos adquiridos para desarrollar y consumir una API RESTful
 - **Serverless Framework** (despliegue y configuración de servicios)
 - **Node.js** (JavaScript para lógica del backend)
 - **DynamoDB** (base de datos NoSQL)
-- **Joi** (validación de datos)
 - **AWS SDK** (interacción con servicios de AWS)
 
 ### Frontend
