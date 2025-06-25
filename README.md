@@ -233,5 +233,3 @@ Este proyecto permitió aplicar conocimientos prácticos sobre arquitectura limp
 * [Node.js Documentation](https://nodejs.org/en/docs/)
 * [React Documentation (si se usó)](https://reactjs.org/docs/getting-started.html)
 
-```
-
