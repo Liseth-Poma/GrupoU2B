@@ -204,7 +204,7 @@ npm start
 
 ## 6. Capturas de Pantalla
 
-> (Incluir imágenes dentro de la carpeta `screenshots/` y enlazarlas aquí)
+> (Incluir imágenes y enlazarlas aquí)
 
 * **Inicio de Sesión**
   ![Login](./screenshots/login.png)
@@ -235,5 +235,3 @@ Este proyecto permitió aplicar conocimientos prácticos sobre arquitectura limp
 
 ```
 
-¿Quieres que también te lo guarde como archivo `.md` o necesitas una plantilla base para editar directamente en GitHub?
-```
