@@ -199,12 +199,13 @@ La aplicación web frontend permite el acceso a distintas funcionalidades según
 
 ---
 
-## 6. Conclusiones
+## 5. Conclusiones
 
 Este proyecto permitió aplicar conocimientos prácticos sobre arquitectura limpia, desarrollo de APIs RESTful con Serverless Framework, uso de bases de datos NoSQL con DynamoDB y desarrollo de interfaces web modernas. Se logró construir un sistema funcional que facilita el control y monitoreo del uso de laboratorios por parte de distintos roles.
 
-## 7. Referencias
-•	Serverless Framework Documentation
-•	AWS DynamoDB Documentation
-•	Node.js Documentation
+## 6. Referencias
+- [Serverless Framework Documentation](https://www.serverless.com/framework/docs)
+- [AWS DynamoDB Documentation](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)
+- [Node.js Documentation](https://nodejs.org/en/docs)
+
 
