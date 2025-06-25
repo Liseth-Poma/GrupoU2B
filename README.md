@@ -1,6 +1,3 @@
-Claro, aquí tienes el contenido que proporcionaste estructurado en un archivo `README.md` con formato Markdown:
-
-```markdown
 # Sistema de Registro de Uso de Laboratorios
 
 ## API RESTful + Aplicación Web (Serverless + DynamoDB)
