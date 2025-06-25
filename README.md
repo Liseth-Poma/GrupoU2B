@@ -1,10 +1,17 @@
-# Sistema de Registro de Uso de Laboratorios – API RESTful + Aplicación Web (Serverless + DynamoDB)
+Claro, aquí tienes el contenido que proporcionaste estructurado en un archivo `README.md` con formato Markdown:
+
+```markdown
+# Sistema de Registro de Uso de Laboratorios
+
+## API RESTful + Aplicación Web (Serverless + DynamoDB)
+
+---
 
 ## 1. Introducción
 
-Este proyecto consiste en el desarrollo de un sistema de registro para el uso de laboratorios, utilizando una **API RESTful** construida con el **framework Serverless** de AWS y una base de datos **NoSQL DynamoDB**. La aplicación web asociada permite gestionar el uso de los laboratorios por parte de docentes, estudiantes y encargados, con una arquitectura limpia que facilita el mantenimiento y la escalabilidad del sistema.
+Este proyecto consiste en el desarrollo de un sistema de registro para el uso de laboratorios, utilizando una API RESTful construida con el framework Serverless de AWS y una base de datos NoSQL DynamoDB. La aplicación web asociada permite gestionar el uso de los laboratorios por parte de docentes, estudiantes y encargados, con una arquitectura limpia que facilita el mantenimiento y la escalabilidad del sistema.
 
-### Objetivo General
+### 🎯 Objetivo General
 
 Aplicar los conocimientos adquiridos para desarrollar y consumir una API RESTful desde una aplicación web frontend, permitiendo gestionar eficientemente los recursos de los laboratorios.
 
@@ -20,16 +27,16 @@ Aplicar los conocimientos adquiridos para desarrollar y consumir una API RESTful
 - **AWS SDK** (interacción con servicios de AWS)
 
 ### Frontend
-- (Incluir aquí  según lo usado)
+- _(Incluir aquí las tecnologías frontend utilizadas: React, Angular, etc.)_
 
 ---
 
 ## 3. Estructura del Proyecto
 
-```bash
-/mi-proyecto
+```
+
+/proyecto
 ├── backend/                # API Serverless
-│   ├── handler.js          # Lógica principal de las funciones Lambda
 │   ├── serverless.yml      # Configuración del proyecto Serverless
 │   └── package.json        # Dependencias y scripts del backend
 │
@@ -39,9 +46,9 @@ Aplicar los conocimientos adquiridos para desarrollar y consumir una API RESTful
 │   │   └── App.js          # Archivo principal del frontend
 │   └── package.json        # Dependencias y scripts del frontend
 │
-├── screenshots/            # Capturas de pantalla del funcionamiento
 ├── .env                    # Variables de entorno (si es necesario)
 └── README.md               # Documentación del proyecto
+
 ````
 
 ---
@@ -50,87 +57,123 @@ Aplicar los conocimientos adquiridos para desarrollar y consumir una API RESTful
 
 ### Actividad 1: Configuración del Entorno Backend
 
-* Instalación de Node.js, Serverless Framework y configuración de credenciales de AWS.
-* Creación del proyecto con `serverless create`.
-* Instalación de dependencias necesarias (`aws-sdk`, `joi`, entre otros).
+- Instalación de Node.js, Serverless Framework y configuración de credenciales de AWS  
+  ![Instalación Node y Serverless](https://imgur.com/LVakcUN)
+
+- Creación del proyecto con `serverless create`  
+  ![Creación de proyecto](https://imgur.com/Vpk7yYD)
+
+- Instalación de dependencias necesarias (`aws-sdk`, `joi`, entre otros)  
+  ![Dependencias](https://imgur.com/sDwBJym)
+
+---
 
 ### Actividad 2: Diseño de la Base de Datos en DynamoDB
 
-Se utilizó el patrón **Single Table Design**, modelando todas las entidades necesarias en una sola tabla (`ItemsTable`).
+Se utilizó el patrón **Single Table Design**, modelando todas las entidades necesarias en una sola tabla (`UsoLabsTable`).
 
-| PK         | SK         | Tipo        | Atributos Adicionales                                                       |
-| ---------- | ---------- | ----------- | --------------------------------------------------------------------------- |
-| LAB#101    | META       | Laboratorio | nombre: "Lab 1", equipos: \["PC01", "PC02"]                                 |
-| ASG#MAT101 | META       | Asignatura  | nombre: "Matemáticas I", docenteId: "DOC#001"                               |
-| ASG#MAT101 | PARCIAL#1  | Parcial     | nombre: "P1", fechaInicio: "2025-03-01", practicas: \["PRACTICA#1"]         |
-| PRACTICA#1 | META       | Práctica    | nombre: "Variables", fecha: "2025-03-15", laboratorioId: "LAB#101"          |
-| EST#001    | PRACTICA#1 | UsoEquipo   | equipo: "PC01", horaInicio: "2025-03-15T08:00", horaFin: "2025-03-15T10:00" |
+![Modelo DynamoDB](https://imgur.com/yBdzsaV)
 
 ---
 
 ### Actividad 3: Implementación de la API RESTful
 
-Se implementaron los siguientes endpoints para gestionar los recursos:
+#### Endpoints Disponibles
 
-#### Laboratorios
+##### 📌 Laboratorios
+- `GET /laboratorios`
+- `POST /laboratorios`
+- `GET /laboratorios/{id}`
+- `PUT /laboratorios/{id}`
+- `DELETE /laboratorios/{id}`
 
-* `GET /laboratorios` - Obtener lista de laboratorios
-* `POST /laboratorios` - Crear laboratorio
-* `GET /laboratorio` - Obtener laboratorio específico
-* `PUT /laboratorios` - Editar laboratorio
-* `DELETE /laboratorios` - Eliminar laboratorio
+##### 📌 Asignaturas
+- `GET /asignaturas`
+- `POST /asignaturas`
+- `GET /asignaturas/{id}`
+- `PUT /asignaturas/{id}`
+- `DELETE /asignaturas/{id}`
 
-#### Asignaturas
+##### 📌 Parciales
+- `GET /parciales`
+- `POST /parciales`
+- `GET /parciales/{asignaturaId}/{parcialId}`
+- `PUT /parciales/{asignaturaId}/{parcialId}`
+- `DELETE /parciales/{asignaturaId}/{parcialId}`
 
-* `GET /asignaturas`
-* `POST /asignaturas`
-* `GET /asignatura`
-* `PUT /asignatura`
-* `DELETE /asignatura`
+##### 📌 Prácticas
+- `GET /practicas`
+- `POST /practicas`
+- `GET /practicas/{id}`
+- `PUT /practicas/{id}`
+- `DELETE /practicas/{id}`
 
-#### Parciales
+##### 📌 Uso de Equipos
+- `GET /uso-equipos`
+- `POST /uso-equipos`
+- `GET /uso-equipos/{estudianteId}/{practicaId}`
+- `PUT /uso-equipos/{estudianteId}/{practicaId}`
+- `DELETE /uso-equipos/{estudianteId}/{practicaId}`
 
-* `GET /parciales`
-* `POST /parciales`
-* `GET /parcial`
-* `PUT /parcial`
-* `DELETE /parcial`
+##### 📌 Usuarios
+- `GET /usuarios`
+- `POST /usuarios`
+- `GET /usuarios/{id}`
+- `PUT /usuarios/{id}`
+- `DELETE /usuarios/{id}`
 
-#### Prácticas
-
-* `GET /practicas`
-* `POST /practicas`
-* `GET /practica`
-* `PUT /practica`
-* `DELETE /practica`
-
-#### Uso de Equipos
-
-* `GET /uso-equipos`
-* `POST /uso-equipos`
-* `GET /uso-equipo`
-* `PUT /uso-equipo`
-* `DELETE /uso-equipo`
-
-#### Usuarios
-
-* `GET /usuarios`
-* `POST /usuarios`
-* `GET /usuario`
-* `PUT /usuario`
-* `DELETE /usuario`
-
-**Ejemplo de definición en `serverless.yml`:**
+#### 🛠️ Fragmento serverless.yml (Ejemplo):
 
 ```yaml
-functions:
-  getLaboratorios:
-    handler: handler.getLaboratorios
-    events:
-      - http:
-          path: laboratorios
-          method: get
-          cors: true
+org: ufaespe
+service: backend
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-east-1
+  environment:
+    DYNAMO_TABLE: UsoLabsTable
+  httpApi:
+    cors:
+      allowedOrigins:
+        - '*'
+      allowedMethods:
+        - GET
+        - POST
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+      Resource:
+        - arn:aws:dynamodb:us-east-1:599841538632:table/UsoLabsTable
+````
+
+> Nota: La definición completa de funciones está incluida en el archivo `serverless.yml` bajo el directorio `backend/`.
+
+#### 🗃️ Recurso DynamoDB
+
+```yaml
+resources:
+  Resources:
+    UsoLabsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: UsoLabsTable
+        AttributeDefinitions:
+          - AttributeName: PK
+            AttributeType: S
+          - AttributeName: SK
+            AttributeType: S
+        KeySchema:
+          - AttributeName: PK
+            KeyType: HASH
+          - AttributeName: SK
+            KeyType: RANGE
+        BillingMode: PAY_PER_REQUEST
 ```
 
 ---
@@ -139,9 +182,9 @@ functions:
 
 Se siguió una arquitectura limpia separando el código en las siguientes capas:
 
-* **Presentación (API Gateway → Lambda)**
-* **Lógica de negocio (handlers y servicios)**
-* **Acceso a datos (consultas a DynamoDB)**
+* **Presentación:** API Gateway → Lambda
+* **Lógica de negocio:** Handlers y servicios
+* **Acceso a datos:** Consultas a DynamoDB
 
 Esto permite escalar fácilmente el proyecto y mantenerlo organizado.
 
@@ -151,84 +194,18 @@ Esto permite escalar fácilmente el proyecto y mantenerlo organizado.
 
 La aplicación web frontend permite el acceso a distintas funcionalidades según el tipo de usuario:
 
-* **Docente**: Ver asignaturas, ver parciales, crear prácticas.
-* **Estudiante**: Ver asignaturas, parciales y prácticas, registrar uso de equipos.
-* **Encargado**: Ver reportes de uso de laboratorios por semana/mes.
+* **Docente:** Ver asignaturas, ver parciales, crear prácticas.
+* **Estudiante:** *(pendiente completar)*
+* **Encargado:** *(pendiente completar)*
 
 ---
 
-## 5. Instrucciones para Ejecutar el Proyecto
-
-### Backend (API Serverless)
-
-1. Instalar dependencias:
-
-```bash
-cd backend/
-npm install
-```
-
-2. Configurar AWS:
-
-```bash
-aws configure
-```
-
-3. Desplegar la API:
-
-```bash
-serverless deploy
-```
-
-4. Probar los endpoints con Postman o curl.
-
----
-
-### Frontend (Aplicación Web)
-
-1. Instalar dependencias:
-
-```bash
-cd frontend/
-npm install
-```
-
-2. Ejecutar la aplicación:
-
-```bash
-npm start
-```
-
----
-
-## 6. Capturas de Pantalla
-
-> (Incluir imágenes y enlazarlas aquí)
-
-* **Inicio de Sesión**
-  ![Login](./screenshots/login.png)
-
-* **Panel del Docente**
-  ![Docente](./screenshots/docente.png)
-
-* **Panel del Estudiante**
-  ![Estudiante](./screenshots/estudiante.png)
-
-* **Reporte del Encargado**
-  ![Encargado](./screenshots/encargado.png)
-
----
-
-## 7. Conclusiones
+## 6. Conclusiones
 
 Este proyecto permitió aplicar conocimientos prácticos sobre arquitectura limpia, desarrollo de APIs RESTful con Serverless Framework, uso de bases de datos NoSQL con DynamoDB y desarrollo de interfaces web modernas. Se logró construir un sistema funcional que facilita el control y monitoreo del uso de laboratorios por parte de distintos roles.
 
----
-
-## 8. Referencias
-
-* [Serverless Framework Documentation](https://www.serverless.com/framework/docs/)
-* [AWS DynamoDB Documentation](https://docs.aws.amazon.com/dynamodb/)
-* [Node.js Documentation](https://nodejs.org/en/docs/)
-* [React Documentation (si se usó)](https://reactjs.org/docs/getting-started.html)
+## 7. Referencias
+•	Serverless Framework Documentation
+•	AWS DynamoDB Documentation
+•	Node.js Documentation
 
