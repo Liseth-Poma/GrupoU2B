@@ -55,13 +55,15 @@ Aplicar los conocimientos adquiridos para desarrollar y consumir una API RESTful
 ### Actividad 1: Configuración del Entorno Backend
 
 - Instalación de Node.js, Serverless Framework y configuración de credenciales de AWS  
-  ![Instalación Node y Serverless](https://imgur.com/LVakcUN)
+  ![Instalación Node y Serverless](https://i.imgur.com/LVakcUN.png)
 
-- Creación del proyecto con `serverless create`  
-  ![Creación de proyecto](https://imgur.com/Vpk7yYD)
+- Creación del proyecto con `serverless create`
+  
+  ![Dependencias](https://imgur.com/sDwBJym.png)
 
-- Instalación de dependencias necesarias (`aws-sdk`, `joi`, entre otros)  
-  ![Dependencias](https://imgur.com/sDwBJym)
+
+- Instalación de dependencias necesarias (`aws-sdk`, `joi`, entre otros)
+  ![Creación de proyecto](https://imgur.com/Vpk7yYD.png)
 
 ---
 
@@ -69,7 +71,7 @@ Aplicar los conocimientos adquiridos para desarrollar y consumir una API RESTful
 
 Se utilizó el patrón **Single Table Design**, modelando todas las entidades necesarias en una sola tabla (`UsoLabsTable`).
 
-![Modelo DynamoDB](https://imgur.com/yBdzsaV)
+![Modelo DynamoDB](https://imgur.com/yBdzsaV.png)
 
 ---
 
@@ -119,7 +121,7 @@ Se utilizó el patrón **Single Table Design**, modelando todas las entidades ne
 - `PUT /usuarios/{id}`
 - `DELETE /usuarios/{id}`
 
-#### Fragmento serverless.yml (Ejemplo):
+#### Fragmento serverless.yml:
 
 ```yaml
 org: ufaespe
@@ -192,8 +194,8 @@ Esto permite escalar fácilmente el proyecto y mantenerlo organizado.
 La aplicación web frontend permite el acceso a distintas funcionalidades según el tipo de usuario:
 
 * **Docente:** Ver asignaturas, ver parciales, crear prácticas.
-* **Estudiante:** *(pendiente completar)*
-* **Encargado:** *(pendiente completar)*
+* **Estudiante:** *(...)*
+* **Encargado:** *(...)*
 
 ---
 
