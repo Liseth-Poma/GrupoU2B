@@ -8,7 +8,7 @@
 
 Este proyecto consiste en el desarrollo de un sistema de registro para el uso de laboratorios, utilizando una API RESTful construida con el framework Serverless de AWS y una base de datos NoSQL DynamoDB. La aplicación web asociada permite gestionar el uso de los laboratorios por parte de docentes, estudiantes y encargados, con una arquitectura limpia que facilita el mantenimiento y la escalabilidad del sistema.
 
-### 🎯 Objetivo General
+### Objetivo General
 
 Aplicar los conocimientos adquiridos para desarrollar y consumir una API RESTful desde una aplicación web frontend, permitiendo gestionar eficientemente los recursos de los laboratorios.
 
@@ -77,49 +77,49 @@ Se utilizó el patrón **Single Table Design**, modelando todas las entidades ne
 
 #### Endpoints Disponibles
 
-##### 📌 Laboratorios
+##### Laboratorios
 - `GET /laboratorios`
 - `POST /laboratorios`
 - `GET /laboratorios/{id}`
 - `PUT /laboratorios/{id}`
 - `DELETE /laboratorios/{id}`
 
-##### 📌 Asignaturas
+##### Asignaturas
 - `GET /asignaturas`
 - `POST /asignaturas`
 - `GET /asignaturas/{id}`
 - `PUT /asignaturas/{id}`
 - `DELETE /asignaturas/{id}`
 
-##### 📌 Parciales
+##### Parciales
 - `GET /parciales`
 - `POST /parciales`
 - `GET /parciales/{asignaturaId}/{parcialId}`
 - `PUT /parciales/{asignaturaId}/{parcialId}`
 - `DELETE /parciales/{asignaturaId}/{parcialId}`
 
-##### 📌 Prácticas
+##### Prácticas
 - `GET /practicas`
 - `POST /practicas`
 - `GET /practicas/{id}`
 - `PUT /practicas/{id}`
 - `DELETE /practicas/{id}`
 
-##### 📌 Uso de Equipos
+##### Uso de Equipos
 - `GET /uso-equipos`
 - `POST /uso-equipos`
 - `GET /uso-equipos/{estudianteId}/{practicaId}`
 - `PUT /uso-equipos/{estudianteId}/{practicaId}`
 - `DELETE /uso-equipos/{estudianteId}/{practicaId}`
 
-##### 📌 Usuarios
+##### Usuarios
 - `GET /usuarios`
 - `POST /usuarios`
 - `GET /usuarios/{id}`
 - `PUT /usuarios/{id}`
 - `DELETE /usuarios/{id}`
 
-#### 🛠️ Fragmento serverless.yml (Ejemplo):
+#### Fragmento serverless.yml (Ejemplo):
 
 ```yaml
 org: ufaespe
@@ -151,7 +151,7 @@ provider:
 
 > Nota: La definición completa de funciones está incluida en el archivo `serverless.yml` bajo el directorio `backend/`.
 
-#### 🗃️ Recurso DynamoDB
+#### Recurso DynamoDB
 
 ```yaml
 resources:
