@@ -13,6 +13,11 @@ module.exports.crearParcial = async (data) => {
     nombre: data.nombre,
     fechaInicio: data.fechaInicio,
   };
+
+  // Agregar opcionalmente idestudiante y nota si existen
+  if (data.idestudiante) item.idestudiante = data.idestudiante;
+  if (data.nota) item.nota = data.nota;
+
   await putItem(item);
   return { mensaje: "Parcial creado exitosamente" };
 };
@@ -33,7 +38,11 @@ module.exports.actualizarParcial = async (asignaturaId, parcialId, data) => {
     nombre: data.nombre,
     fechaInicio: data.fechaInicio,
   };
-  await putItem(item); // sobrescribe el item
+
+  if (data.idestudiante) item.idestudiante = data.idestudiante;
+  if (data.nota) item.nota = data.nota;
+
+  await putItem(item);
   return { mensaje: "Parcial actualizado exitosamente" };
 };
 
