@@ -117,17 +117,38 @@ Se utilizó el patrón **Single Table Design**, modelando todas las entidades ne
 
 ##### Parciales
 - `GET /parciales`
+
+![Modelo DynamoDB](https://imgur.com/qwHSK4i.png)
 - `POST /parciales`
+
+![Modelo DynamoDB](https://imgur.com/T8xO88d.png)
 - `GET /parciales/{asignaturaId}/{parcialId}`
+
+![Modelo DynamoDB](https://imgur.com/bb3JPsp.png)
+
 - `PUT /parciales/{asignaturaId}/{parcialId}`
+
+![Modelo DynamoDB](https://imgur.com/oRs2TuY.png)
 - `DELETE /parciales/{asignaturaId}/{parcialId}`
+
+![Modelo DynamoDB](https://imgur.com/IrP8wUo.png)
 
 ##### Prácticas
 - `GET /practicas`
+
+![Modelo DynamoDB](https://imgur.com/GDPtoX4.png)
 - `POST /practicas`
+
+![Modelo DynamoDB](https://imgur.com/clVVMzy.png)
 - `GET /practicas/{id}`
+
+![Modelo DynamoDB](https://imgur.com/eDsk7JK.png)
 - `PUT /practicas/{id}`
+
+![Modelo DynamoDB](https://imgur.com/1xIVyaJ.png)
 - `DELETE /practicas/{id}`
+
+![Modelo DynamoDB](https://imgur.com/Brpna1L.png)
 
 ##### Uso de Equipos
 - `GET /uso-equipos`
