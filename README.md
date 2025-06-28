@@ -81,17 +81,39 @@ Se utilizó el patrón **Single Table Design**, modelando todas las entidades ne
 
 ##### Laboratorios
 - `GET /laboratorios`
+
+![Modelo DynamoDB](https://imgur.com/ppwmeCR.png)
 - `POST /laboratorios`
+
+![Modelo DynamoDB](https://imgur.com/sFHffWr.png)
+
 - `GET /laboratorios/{id}`
+
+![Modelo DynamoDB](https://imgur.com/gxNEriH.png)
+
 - `PUT /laboratorios/{id}`
+
+![Modelo DynamoDB](https://imgur.com/VO4CXkL.png)
 - `DELETE /laboratorios/{id}`
+
+![Modelo DynamoDB](https://imgur.com/GZIqLKD.png)
 
 ##### Asignaturas
 - `GET /asignaturas`
+
+![Modelo DynamoDB](https://imgur.com/W2YIK12.png)
 - `POST /asignaturas`
+
+![Modelo DynamoDB](https://imgur.com/Dv8uhni.png)
 - `GET /asignaturas/{id}`
+
+![Modelo DynamoDB](https://imgur.com/p9q4lyB.png)
 - `PUT /asignaturas/{id}`
+
+![Modelo DynamoDB](https://imgur.com/dqArnJD.png)
 - `DELETE /asignaturas/{id}`
+
+![Modelo DynamoDB](https://imgur.com/t6iKWjB.png)
 
 ##### Parciales
 - `GET /parciales`
