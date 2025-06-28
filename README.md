@@ -39,18 +39,45 @@ Aplicar los conocimientos adquiridos para desarrollar y consumir una API RESTful
 ```
 
 /proyecto
-├── backend/                # API Serverless
-│   ├── serverless.yml      # Configuración del proyecto Serverless
-│   └── package.json        # Dependencias y scripts del backend
-│
-├── frontend/               # Aplicación Web
+├── backend/                     # API Serverless
+│   ├── serverless.yml           # Configuración del proyecto Serverless
+│   ├── package.json             # Dependencias y scripts del backend
+│   └── src/                     # Código fuente del backend
+│       ├── handlers/            # Controladores de las rutas Lambda
+│       │   ├── asignaturas.js
+│       │   ├── laboratorio.js
+│       │   ├── parciales.js
+│       │   ├── practicas.js
+│       │   ├── usoEquipos.js
+│       │   └── usuarios.js
+│       ├── models/              # Configuración de DynamoDB
+│       │   └── dynamoClient.js
+│       │
+│       ├── services/            # Lógica de negocio
+│       │   ├── asignaturaService.js
+│       │   ├── laboratorioService.js
+│       │   ├── parcialService.js
+│       │   ├── practicaService.js
+│       │   ├── usoEquipoService.js
+│       │   └── usuarioService.js
+│       ├── utils/               # Utilidades comunes
+│       │   └── response.js
+│       │
+│       └── validations/         # Esquemas de validación
+│           ├── asignaturaSchema.js
+│           ├── laboratorioSchema.js
+│           ├── parcialSchema.js
+│           ├── practicaSchema.js
+│           ├── usoEquipoSchema.js
+│           └── usuarioSchema.js
+├── frontend/                    # Aplicación Web
 │   ├── src/
-│   │   ├── components/     # Componentes reutilizables
-│   │   └── App.js          # Archivo principal del frontend
-│   └── package.json        # Dependencias y scripts del frontend
+│   │   ├── components/          # Componentes reutilizables
+│   │   └── App.js               # Archivo principal del frontend
+│   └── package.json             # Dependencias y scripts del frontend
 │
-├── .env                    # Variables de entorno (si es necesario)
-└── README.md               # Documentación del proyecto
+├── .env                         # Variables de entorno (si es necesario)
+└── README.md                    # Documentación del proyecto
 
 ````
 
