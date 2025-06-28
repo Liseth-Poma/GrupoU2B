@@ -74,7 +74,6 @@ Se utilizó el patrón **Single Table Design**, modelando todas las entidades ne
 ![Modelo DynamoDB](https://imgur.com/yBdzsaV.png)
 
 ---
-
 ### Actividad 3: Implementación de la API RESTful
 
 #### Endpoints Disponibles
@@ -82,87 +81,129 @@ Se utilizó el patrón **Single Table Design**, modelando todas las entidades ne
 ##### Laboratorios
 - `GET /laboratorios`
 
-![Modelo DynamoDB](https://imgur.com/ppwmeCR.png)
+<img src="https://imgur.com/ppwmeCR.png" width="250" height="250"/>
+
 - `POST /laboratorios`
 
-![Modelo DynamoDB](https://imgur.com/sFHffWr.png)
+<img src="https://imgur.com/sFHffWr.png" width="250" height="200"/>
 
 - `GET /laboratorios/{id}`
 
-![Modelo DynamoDB](https://imgur.com/gxNEriH.png)
+<img src="https://imgur.com/gxNEriH.png" width="200" height="250"/>
 
 - `PUT /laboratorios/{id}`
 
-![Modelo DynamoDB](https://imgur.com/VO4CXkL.png)
+<img src="https://imgur.com/VO4CXkL.png" width="250" height="200"/>
+
 - `DELETE /laboratorios/{id}`
 
-![Modelo DynamoDB](https://imgur.com/GZIqLKD.png)
+<img src="https://imgur.com/GZIqLKD.png" width="250" height="150"/>
 
 ##### Asignaturas
 - `GET /asignaturas`
 
-![Modelo DynamoDB](https://imgur.com/W2YIK12.png)
+<img src="https://imgur.com/W2YIK12.png" width="250" height="250"/>
+
 - `POST /asignaturas`
 
-![Modelo DynamoDB](https://imgur.com/Dv8uhni.png)
+<img src="https://imgur.com/Dv8uhni.png" width="250" height="250"/>
+
 - `GET /asignaturas/{id}`
 
-![Modelo DynamoDB](https://imgur.com/p9q4lyB.png)
+<img src="https://imgur.com/p9q4lyB.png" width="250" height="250"/>
+
 - `PUT /asignaturas/{id}`
 
-![Modelo DynamoDB](https://imgur.com/dqArnJD.png)
+<img src="https://imgur.com/dqArnJD.png" width="250" height="250"/>
+
 - `DELETE /asignaturas/{id}`
 
-![Modelo DynamoDB](https://imgur.com/t6iKWjB.png)
+<img src="https://imgur.com/t6iKWjB.png" width="250" height="150"/>
 
 ##### Parciales
 - `GET /parciales`
 
-![Modelo DynamoDB](https://imgur.com/qwHSK4i.png)
+<img src="https://imgur.com/qwHSK4i.png" width="200" height="250"/>
+
 - `POST /parciales`
 
-![Modelo DynamoDB](https://imgur.com/T8xO88d.png)
-- `GET /parciales/{asignaturaId}/{parcialId}`
+<img src="https://imgur.com/T8xO88d.png" width="200" height="250"/>
 
-![Modelo DynamoDB](https://imgur.com/bb3JPsp.png)
+- `GET /parciales/{id}`
 
-- `PUT /parciales/{asignaturaId}/{parcialId}`
+<img src="https://imgur.com/bb3JPsp.png" width="250" height="250"/>
 
-![Modelo DynamoDB](https://imgur.com/oRs2TuY.png)
-- `DELETE /parciales/{asignaturaId}/{parcialId}`
+- `PUT /parciales/{id}`
 
-![Modelo DynamoDB](https://imgur.com/IrP8wUo.png)
+<img src="https://imgur.com/oRs2TuY.png" width="250" height="250"/>
+
+- `DELETE /parciales/{id}`
+
+<img src="https://imgur.com/IrP8wUo.png" width="250" height="150"/>
 
 ##### Prácticas
 - `GET /practicas`
 
-![Modelo DynamoDB](https://imgur.com/GDPtoX4.png)
+<img src="https://imgur.com/GDPtoX4.png" width="250" height="250"/>
+
 - `POST /practicas`
 
-![Modelo DynamoDB](https://imgur.com/clVVMzy.png)
+<img src="https://imgur.com/clVVMzy.png" width="250" height="250"/>
+
 - `GET /practicas/{id}`
 
-![Modelo DynamoDB](https://imgur.com/eDsk7JK.png)
+<img src="https://imgur.com/eDsk7JK.png" width="200" height="250"/>
+
 - `PUT /practicas/{id}`
 
-![Modelo DynamoDB](https://imgur.com/1xIVyaJ.png)
+<img src="https://imgur.com/1xIVyaJ.png" width="250" height="250"/>
+
 - `DELETE /practicas/{id}`
 
-![Modelo DynamoDB](https://imgur.com/Brpna1L.png)
+<img src="https://imgur.com/Brpna1L.png" width="250" height="150"/>
 
 ##### Uso de Equipos
 - `GET /uso-equipos`
+
+<img src="https://github.com/user-attachments/assets/46437ecc-7172-49ef-8686-a5a66360e97b" width="250" height="250"/>
+
 - `POST /uso-equipos`
-- `GET /uso-equipos/{estudianteId}/{practicaId}`
-- `PUT /uso-equipos/{estudianteId}/{practicaId}`
-- `DELETE /uso-equipos/{estudianteId}/{practicaId}`
+
+<img src="https://imgur.com/ixKnKVZ.png" width="250" height="250"/>
+
+- `GET /uso-equipos/{id}`
+
+<img src="https://imgur.com/uwPLgUm.png" width="250" height="250"/>
+
+- `PUT /uso-equipos/{id}`
+
+<img src="https://imgur.com/huZNqE8.png" width="250" height="250"/>
+
+- `DELETE /uso-equipos/{id}`
+
+<img src="https://imgur.com/XbRKfie.png" width="250" height="150"/>
 
 ##### Usuarios
 - `GET /usuarios`
+
+<img src="https://imgur.com/Yz57Xp8.png" width="250" height="250"/>
+
 - `POST /usuarios`
+
+<img src="https://imgur.com/CyUI8Tl.png" wwidth="250" height="250"/>
+
 - `GET /usuarios/{id}`
+
+<img src="https://imgur.com/Y6UsNs0.png" width="250" height="250"/>
+
 - `PUT /usuarios/{id}`
+
+<img src="https://imgur.com/6iD2AdD.png" width="250" height="250"/>
+
 - `DELETE /usuarios/{id}`
+
+<img src="https://imgur.com/x2VJ3nD.png" width="250" height="150"/>
+
 
 #### Fragmento serverless.yml:
 
