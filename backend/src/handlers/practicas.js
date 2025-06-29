@@ -72,3 +72,15 @@ module.exports.delete = async (event) => {
     });
   }
 };
+
+module.exports.getPracticasDetalladas = async () => {
+  try {
+    const resultado = await servicio.listarPracticas();
+    return response(200, resultado);
+  } catch (err) {
+    return response(500, {
+      error: "Error al obtener prácticas detalladas",
+      detalle: err.message,
+    });
+  }
+};

@@ -6,6 +6,7 @@ const schema = Joi.object({
   fecha: Joi.string().isoDate().required(),
   // parcialId: Joi.string().required(),
   laboratorioId: Joi.string().required(),
+  docenteId: Joi.string().required(),
 });
 
 module.exports.validatePractica = (data) => schema.validate(data);

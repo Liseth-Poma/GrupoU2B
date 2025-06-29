@@ -177,6 +177,12 @@ functions:
           path: /practicas/{id}
           method: delete
 
+  getPracticasDetalladas:
+    handler: src/handlers/practicas.getPracticasDetalladas
+    events:
+      - http:
+          path: /practicas/detalladas
+          method: get
   ##############
   # USO DE EQUIPOS
   ##############
