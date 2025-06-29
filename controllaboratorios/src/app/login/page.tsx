@@ -9,7 +9,7 @@ export default function LoginPage() {
   const [formData, setFormData] = useState({
     correo: '',
     nombre: '',
-    rol: '',
+    rol: 'docente',
   });
 
   const [error, setError] = useState('');
