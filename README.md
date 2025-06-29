@@ -30,7 +30,13 @@ Aplicar los conocimientos adquiridos para desarrollar y consumir una API RESTful
 - **AWS SDK** (interacción con servicios de AWS)
 
 ### Frontend
-- _(Incluir aquí las tecnologías frontend utilizadas: React, Angular, etc.)_
+- **Next.js:** Framework de React para construir aplicaciones web modernas.
+
+- **React 19:** Biblioteca de JavaScript para construir interfaces de usuario basadas en componentes.
+
+- **TypeScript:** Superset de JavaScript que añade tipado estático, mejorando la mantenibilidad del código.
+
+- **Tailwind CSS:** Framework de diseño basado en utilidades que permite construir interfaces modernas y responsivas rápidamente.
 
 ---
 
@@ -39,47 +45,56 @@ Aplicar los conocimientos adquiridos para desarrollar y consumir una API RESTful
 ```
 
 /proyecto
-├── backend/                     # API Serverless
-│   ├── serverless.yml           # Configuración del proyecto Serverless
-│   ├── package.json             # Dependencias y scripts del backend
-│   └── src/                     # Código fuente del backend
-│       ├── handlers/            # Controladores de las rutas Lambda
-│       │   ├── asignaturas.js
-│       │   ├── laboratorio.js
-│       │   ├── parciales.js
-│       │   ├── practicas.js
-│       │   ├── usoEquipos.js
-│       │   └── usuarios.js
-│       ├── models/              # Configuración de DynamoDB
-│       │   └── dynamoClient.js
-│       │
-│       ├── services/            # Lógica de negocio
-│       │   ├── asignaturaService.js
-│       │   ├── laboratorioService.js
-│       │   ├── parcialService.js
-│       │   ├── practicaService.js
-│       │   ├── usoEquipoService.js
-│       │   └── usuarioService.js
-│       ├── utils/               # Utilidades comunes
-│       │   └── response.js
-│       │
-│       └── validations/         # Esquemas de validación
-│           ├── asignaturaSchema.js
-│           ├── laboratorioSchema.js
-│           ├── parcialSchema.js
-│           ├── practicaSchema.js
-│           ├── usoEquipoSchema.js
-│           └── usuarioSchema.js
-├── frontend/                    # Aplicación Web
+├── backend/                          # API Serverless
 │   ├── src/
-│   │   ├── components/          # Componentes reutilizables
-│   │   └── App.js               # Archivo principal del frontend
-│   └── package.json             # Dependencias y scripts del frontend
+│   │   ├── handlers/                 # Funciones Lambda (capa de presentación)
+│   │   │   ├── asignaturas.js
+│   │   │   ├── laboratorio.js
+│   │   │   ├── parciales.js
+│   │   │   ├── practicas.js
+│   │   │   ├── usoEquipos.js
+│   │   │   └── usuarios.js
+│   │   ├── models/                   # Cliente DynamoDB (capa de acceso a datos)
+│   │   │   └── dynamoClient.js
+│   │   ├── services/                 # Lógica de negocio
+│   │   │   ├── asignaturaService.js
+│   │   │   ├── laboratorioService.js
+│   │   │   ├── parcialService.js
+│   │   │   ├── practicaService.js
+│   │   │   ├── usoEquipoService.js
+│   │   │   └── usuarioService.js
+│   │   ├── utils/                    # Utilidades generales
+│   │   │   └── response.js
+│   │   └── validations/             # Esquemas de validación
+│   │       ├── asignaturaSchema.js
+│   │       ├── laboratorioSchema.js
+│   │       ├── parcialSchema.js
+│   │       ├── practicaSchema.js
+│   │       ├── usoEquipoSchema.js
+│   │       └── usuarioSchema.js
+│   ├── serverless.yml                # Configuración Serverless
+│   └── package.json                  # Dependencias del backend
 │
-├── .env                         # Variables de entorno (si es necesario)
-└── README.md                    # Documentación del proyecto
+├── frontend/                         # Aplicación Web (React o Next.js)
+│   ├── src/
+│   │   ├── app/                      # Rutas de la aplicación
+│   │   │   ├── api/                  # Llamadas a la API
+│   │   │   ├── dashboard/           # Interfaz para el dashboard
+│   │   │   ├── login/               # Página de inicio de sesión
+│   │   │   └── register/            # Página de registro
+│   │   ├── components/              # Componentes reutilizables
+│   │   ├── contexts/                # Contextos globales (auth, user, etc.)
+│   │   ├── lib/                     # Funciones auxiliares o servicios del frontend
+│   │   ├── globals.css              # Estilos globales
+│   │   ├── layout.tsx               # Diseño base de la app
+│   │   └── page.tsx                 # Página principal
+│   └── package.json                 # Dependencias del frontend
+│
+├── .env                              # Variables de entorno
+└── README.md                         # Documentación general del proyecto
 
-````
+
+```
 
 ---
 
@@ -296,23 +311,72 @@ resources:
 
 ### Actividad 4: Arquitectura Limpia del Backend
 
-Se siguió una arquitectura limpia separando el código en las siguientes capas:
+![Instalación Node y Serverless](https://imgur.com/cdybaVU.png)
 
-* **Presentación:** API Gateway → Lambda
-* **Lógica de negocio:** Handlers y servicios
-* **Acceso a datos:** Consultas a DynamoDB
+Para el desarrollo del backend se implementó una arquitectura limpia y modular, lo que permite una mayor escalabilidad, mantenimiento y separación de responsabilidades. Esta arquitectura se estructuró en las siguientes capas principales:
 
-Esto permite escalar fácilmente el proyecto y mantenerlo organizado.
+Capa de Presentación (handlers)
+Ubicada en src/handlers/, esta capa expone las funciones Lambda que son invocadas a través de API Gateway. Cada archivo (por ejemplo, asignaturas.js, laboratorio.js) contiene los controladores que reciben las solicitudes HTTP, validan los datos y delegan el procesamiento a los servicios correspondientes.
+
+Capa de Lógica de Negocio (services)
+En src/services/ se encuentra la lógica que gestiona cada entidad del sistema. Los servicios encapsulan la lógica de aplicación como creación, actualización, eliminación y consulta de datos, evitando que esta se mezcle con la presentación o el acceso a datos. Por ejemplo, laboratorioService.js maneja toda la lógica relacionada con laboratorios.
+
+Capa de Validaciones (validations)
+La carpeta src/validations/ contiene los esquemas de validación de datos para cada entidad. Esto asegura que los datos ingresados cumplan con las reglas definidas antes de ser procesados.
+
+Capa de Acceso a Datos (models)
+En src/models/ se encuentra la configuración del cliente de DynamoDB (dynamoClient.js), el cual es utilizado por los servicios para realizar operaciones de lectura y escritura en la base de datos.
+
+Capa de Utilidades (utils)
+El archivo response.js ubicado en src/utils/ unifica las respuestas estándar de las funciones Lambda, asegurando una estructura consistente para los mensajes de éxito o error enviados al cliente.
 
 ---
 
-### Actividad 5: Desarrollo del Frontend
+## Actividad 5: Desarrollo del Frontend
+
+### Funcionalidades del Frontend
+
+## Opción de Registro para usuarios sin cuenta
+
+<img src="https://imgur.com/b2LnyVR.png" width="300"/>
 
 La aplicación web frontend permite el acceso a distintas funcionalidades según el tipo de usuario:
 
-* **Docente:** Ver asignaturas, ver parciales, crear prácticas.
-* **Estudiante:** *(...)*
-* **Encargado:** *(...)*
+---
+
+### **DOCENTE**
+
+**Inicio de sesión Usuario Docente:**
+
+<img src="https://imgur.com/lHQIxIX.png" width="300"/>
+
+**Docente:** Ver asignaturas, ver parciales, crear prácticas.
+
+<img src="https://imgur.com/oJd7OWJ.png" width="350"/>
+
+---
+
+### **ESTUDIANTE**
+
+**Inicio de sesión Usuario Estudiante:**
+
+<img src="https://imgur.com/v7y1jBT.png" width="300"/>
+
+**Estudiante:** Ver asignaturas, parciales y prácticas. Registrar uso de equipos cuando la práctica está habilitada.
+
+<img src="https://imgur.com/o5oxPjh.png" width="300"/>
+
+---
+
+### **ENCARGADO**
+
+**Inicio de sesión Usuario Encargado:**
+
+<img src="https://imgur.com/tD4bQvb.png" width="300"/>
+
+**Encargado:** Ver reporte de uso de laboratorios por semana/mes.
+
+<img src="https://imgur.com/B1ycuOk.png" width="300"/>
 
 ---
 
