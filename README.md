@@ -75,7 +75,7 @@ Aplicar los conocimientos adquiridos para desarrollar y consumir una API RESTful
 │   ├── serverless.yml                # Configuración Serverless
 │   └── package.json                  # Dependencias del backend
 │
-├── frontend/                         # Aplicación Web (React o Next.js)
+├── frontend/                         # Aplicación Web con Next.js
 │   ├── src/
 │   │   ├── app/                      # Rutas de la aplicación
 │   │   │   ├── api/                  # Llamadas a la API
