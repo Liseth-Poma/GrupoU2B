@@ -5,6 +5,24 @@ const {
   queryByTipo,
 } = require("../models/dynamoClient");
 
+// Función helper para transformar los datos de DynamoDB al formato del frontend
+const transformarAsignatura = (item) => {
+  if (!item) return null;
+
+  return {
+    id: item.PK.replace("ASG#", ""), // Remover el prefijo ASG#
+    nombre: item.nombre,
+    codigo: item.codigo,
+    docenteId: item.docenteId,
+    // Incluir otros campos si los hay
+  };
+};
+
+// Función helper para transformar múltiples asignaturas
+const transformarAsignaturas = (items) => {
+  return items.map(transformarAsignatura);
+};
+
 module.exports.crearAsignatura = async (data) => {
   const item = {
     PK: `ASG#${data.id}`,
@@ -15,15 +33,24 @@ module.exports.crearAsignatura = async (data) => {
     docenteId: data.docenteId,
   };
   await putItem(item);
-  return { mensaje: "Asignatura creada exitosamente" };
+
+  // Retornar la asignatura creada sin prefijos
+  return {
+    mensaje: "Asignatura creada exitosamente",
+    asignatura: transformarAsignatura(item),
+  };
 };
 
 module.exports.obtenerAsignaturas = async () => {
-  return await queryByTipo("Asignatura");
+  const items = await queryByTipo("Asignatura");
+  // Transformar todos los items antes de retornarlos
+  return transformarAsignaturas(items);
 };
 
 module.exports.obtenerAsignaturaPorId = async (id) => {
-  return await getItem(`ASG#${id}`, "META");
+  const item = await getItem(`ASG#${id}`, "META");
+  // Transformar el item antes de retornarlo
+  return transformarAsignatura(item);
 };
 
 module.exports.actualizarAsignatura = async (id, data) => {
@@ -36,7 +63,11 @@ module.exports.actualizarAsignatura = async (id, data) => {
     docenteId: data.docenteId,
   };
   await putItem(item); // sobrescribe el item
-  return { mensaje: "Asignatura actualizada exitosamente" };
+
+  return {
+    mensaje: "Asignatura actualizada exitosamente",
+    asignatura: transformarAsignatura(item),
+  };
 };
 
 module.exports.eliminarAsignatura = async (id) => {

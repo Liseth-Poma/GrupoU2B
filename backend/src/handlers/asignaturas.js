@@ -22,7 +22,8 @@ module.exports.create = async (event) => {
 module.exports.getAll = async () => {
   try {
     const result = await servicio.obtenerAsignaturas();
-    return response(200, result);
+    // Los datos ya vienen transformados desde el servicio
+    return response(200, { asignaturas: result });
   } catch (err) {
     return response(500, {
       error: "Error al obtener asignaturas",
@@ -36,7 +37,8 @@ module.exports.getById = async (event) => {
     const id = event.pathParameters.id;
     const result = await servicio.obtenerAsignaturaPorId(id);
     if (!result) return response(404, { mensaje: "Asignatura no encontrada" });
-    return response(200, result);
+
+    return response(200, { asignatura: result });
   } catch (err) {
     return response(500, {
       error: "Error al obtener asignatura",
@@ -51,6 +53,7 @@ module.exports.update = async (event) => {
     const data = JSON.parse(event.body);
     const { error } = validateAsignatura(data);
     if (error) return response(400, { mensaje: error.details[0].message });
+
     const result = await servicio.actualizarAsignatura(id, data);
     return response(200, result);
   } catch (err) {
