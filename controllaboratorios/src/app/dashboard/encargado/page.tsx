@@ -1,10 +1,20 @@
 "use client";
 
+import ReporteFinalLaboratorio from "@/components/encargado/reporteLaboratorio";
+
 export default function PanelEncargado() {
   return (
-    <main className="p-6">
-      <h1 className="text-3xl font-bold mb-4">Panel del Encargado de Laboratorio</h1>
-      <p className="mb-2">📊 Ver reporte de uso por semana / mes</p>
+    <main className="min-h-screen bg-gray-100 p-6">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-4xl font-bold text-green-700 mb-6 text-center">
+          👨‍🔧 Panel del Encargado de Laboratorio
+        </h1>
+        <p className="text-gray-600 text-center mb-8">
+          Consulta los reportes de uso de equipos por semana o mes.
+        </p>
+
+        <ReporteFinalLaboratorio />
+      </div>
     </main>
   );
 }
