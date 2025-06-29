@@ -20,7 +20,7 @@ export async function POST(request: Request) {
 
 export async function GET(request: Request) {
     try {
-        const response = await axios.get(`${API_URL_FINAL}/uso-equipos`, {
+        const response = await axios.get(`https://xkkl9uzr67.execute-api.us-east-1.amazonaws.com/dev/practicas/detalladas`, {
             withCredentials: true,
         });
         return NextResponse.json(response.data);
