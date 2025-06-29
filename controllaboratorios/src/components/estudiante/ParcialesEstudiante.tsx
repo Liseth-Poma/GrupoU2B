@@ -13,8 +13,8 @@ export default function ParcialesEstudiante() {
     <section>
       <h2 className="text-2xl font-semibold text-green-700 mb-4">📝 Parciales</h2>
       <div className="grid gap-4 sm:grid-cols-2">
-        {parciales.map((p: any) => (
-          <div key={p.id} className="bg-white rounded-xl shadow-md p-4 border hover:shadow-lg transition">
+        {parciales.map((p: any, index: number) => (
+          <div key={`${p.id}-${index}`} className="bg-white rounded-xl shadow-md p-4 border hover:shadow-lg transition">
             <p className="text-gray-800">{p.nombre}</p>
           </div>
         ))}

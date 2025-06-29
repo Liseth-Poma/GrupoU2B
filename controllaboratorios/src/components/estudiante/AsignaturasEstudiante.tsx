@@ -6,7 +6,7 @@ export default function AsignaturasEstudiante() {
   const [asignaturas, setAsignaturas] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/asignaturas").then((res) => setAsignaturas(res.data));
+    axios.get("/api/asignaturas").then((res) => setAsignaturas(res.data.asignaturas));
   }, []);
 
   return (
